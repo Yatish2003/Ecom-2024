@@ -1,0 +1,204 @@
+{
+  "product": [
+    {
+      "id": "1",
+      "img": "tshirt.png",
+      "product_name": "Mens tshirt",
+      "category": "mens",
+      "wishlist": false,
+      "cart": false,
+      "description": "A chic and elegant dress perfect for any occasion.",
+      "price": 1499
+    },
+    {
+      "id": "2",
+      "img": "womendress.png",
+      "product_name": "Women's Dress",
+      "category": "womens",
+      "wishlist": false,
+      "cart": true,
+      "description": "A chic and elegant dress perfect for any occasion.",
+      "price": 1499
+    },
+    {
+      "id": "3",
+      "img": "kidshoodie-removebg-preview.png",
+      "product_name": "Kids' Hoodie",
+      "category": "kids",
+      "wishlist": false,
+      "cart": false,
+      "description": "A cozy hoodie designed for kids, made from soft fabric.",
+      "price": 799
+    },
+    {
+      "id": "4",
+      "img": "Sneaker-removebg-preview.png",
+      "product_name": "Men's Sneakers",
+      "category": "mens",
+      "wishlist": false,
+      "cart": true,
+      "description": "Stylish men's sneakers that provide both comfort and support.",
+      "price": 2499
+    },
+    {
+      "id": "5",
+      "img": "HandBag.png",
+      "product_name": "Women's Handbag",
+      "category": "womens",
+      "wishlist": false,
+      "cart": false,
+      "description": "A fashionable handbag that combines style and functionality.",
+      "price": 1999
+    },
+    {
+      "id": "6",
+      "img": "bagback.png",
+      "product_name": "Kids' Backpack",
+      "category": "kids",
+      "wishlist": false,
+      "cart": false,
+      "description": "A durable and fun backpack perfect for school or play.",
+      "price": 899
+    },
+    {
+      "id": "7",
+      "img": "mensjacket-removebg-preview.png",
+      "product_name": "Men's Jacket",
+      "category": "mens",
+      "wishlist": false,
+      "cart": false,
+      "description": "A versatile jacket for men, great for layering in any season.",
+      "price": 2999
+    },
+    {
+      "id": "8",
+      "img": "women_sandals.png",
+      "product_name": "Women's Sandals",
+      "category": "womens",
+      "wishlist": false,
+      "cart": false,
+      "description": "Stylish and comfortable sandals for warm weather.",
+      "price": 1299
+    },
+    {
+      "id": "9",
+      "img": "kids_cap.png",
+      "product_name": "Kids' Cap",
+      "category": "kids",
+      "wishlist": false,
+      "cart": false,
+      "description": "A playful cap designed for kids to protect them from the sun.",
+      "price": 399
+    },
+    {
+      "id": "10",
+      "img": "mensBelt.png",
+      "product_name": "Men's Belt",
+      "category": "mens",
+      "wishlist": false,
+      "cart": false,
+      "description": "A classic men's belt that adds a touch of elegance to any outfit.",
+      "price": 799
+    },
+    {
+      "id": "11",
+      "img": "https://example.com/images/product11.jpg",
+      "product_name": "Men's Formal Shirt",
+      "category": "mens",
+      "wishlist": false,
+      "cart": false,
+      "description": "A sharp formal shirt suitable for business or special occasions.",
+      "price": 1399
+    },
+    {
+      "id": "12",
+      "img": "https://example.com/images/product12.jpg",
+      "product_name": "Women's Blouse",
+      "category": "womens",
+      "wishlist": false,
+      "cart": false,
+      "description": "An elegant blouse perfect for both casual and formal settings.",
+      "price": 999
+    },
+    {
+      "id": "13",
+      "img": "https://example.com/images/product13.jpg",
+      "product_name": "Kids' Pajamas",
+      "category": "kids",
+      "wishlist": false,
+      "cart": false,
+      "description": "Soft and cozy pajamas for a comfortable night's sleep.",
+      "price": 699
+    },
+    {
+      "id": "14",
+      "img": "https://example.com/images/product14.jpg",
+      "product_name": "Men's Running Shoes",
+      "category": "mens",
+      "wishlist": false,
+      "cart": false,
+      "description": "Lightweight running shoes designed for performance and comfort.",
+      "price": 2999
+    },
+    {
+      "id": "15",
+      "img": "https://example.com/images/product15.jpg",
+      "product_name": "Women's Skirt",
+      "category": "womens",
+      "wishlist": false,
+      "cart": false,
+      "description": "A stylish skirt that can be dressed up or down for any occasion.",
+      "price": 1299
+    },
+    {
+      "id": "16",
+      "img": "https://example.com/images/product16.jpg",
+      "product_name": "Kids' Raincoat",
+      "category": "kids",
+      "wishlist": false,
+      "cart": false,
+      "description": "A fun and functional raincoat to keep kids dry and happy.",
+      "price": 1099
+    },
+    {
+      "id": "17",
+      "img": "https://example.com/images/product17.jpg",
+      "product_name": "Men's Cargo Shorts",
+      "category": "mens",
+      "wishlist": false,
+      "cart": true,
+      "description": "Practical cargo shorts with plenty of pockets for all essentials.",
+      "price": 1499
+    },
+    {
+      "id": "18",
+      "img": "https://example.com/images/product18.jpg",
+      "product_name": "Women's Sunglasses",
+      "category": "womens",
+      "wishlist": false,
+      "cart": false,
+      "description": "Stylish sunglasses that provide UV protection and enhance any outfit.",
+      "price": 899
+    },
+    {
+      "id": "19",
+      "img": "https://example.com/images/product19.jpg",
+      "product_name": "Kids' Sneakers",
+      "category": "kids",
+      "wishlist": false,
+      "cart": false,
+      "description": "Durable and comfortable sneakers perfect for active kids.",
+      "price": 999
+    },
+    {
+      "id": "20",
+      "img": "https://example.com/images/product20.jpg",
+      "product_name": "Men's Wallet",
+      "category": "mens",
+      "wishlist": false,
+      "cart": false,
+      "description": "A classic wallet that combines style and practicality.",
+      "price": 1499
+    }
+  ]
+}
