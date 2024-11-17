@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Swal from 'sweetalert2';
+import {useNavigate} from 'react-router-dom';
 function Mens() {
     // Get Api
     const [mensProduct, setmensProduct] = useState([]);
@@ -12,6 +13,12 @@ function Mens() {
             .catch((err) => { console.log(err) });
     }, []);
     console.log(mensProduct, "mens")
+
+            // View Data
+            const navigate = useNavigate();
+            function viewData(id) {
+                navigate('/products/description', { state: { id } })
+            }
 
      // Update Api
 
@@ -70,20 +77,70 @@ function Mens() {
                     mensProduct.map((val) => {
                         if(val.category =="mens"){
                             return (
-                                <Card style={{ width: '18rem', margin: "15px" }}>
-                                    <Card.Img variant="top" src={val.img} />
-                                    <Card.Body>
-                                        <Card.Title className='text-danger'>{val.product_name}</Card.Title>
-                                        <Card.Text >
-                                            {val.description}<br />
-                                        </Card.Text>
-                                        <Card.Text style={{ color: "orange" }}>
-                                            price:₹{val.price}
-                                        </Card.Text>
-                                        
-                                        <Button variant="primary" style={{ margin: "10px 0px",width:"200px",backgroundColor:"navy" }} onClick={() => { updateCartID(val) }}>Add to Cart</Button>
-                                    </Card.Body>
-                                </Card>
+                                <Card style={{ width: '20rem', margin: "15px", borderRadius: "15px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
+    {/* Increased Image Size */}
+    <Card.Img 
+        style={{
+            width: '100%', // Ensure the image spans full width of the card
+            height: '250px', // Increased image height for prominence
+            objectFit: 'cover', 
+            borderTopLeftRadius: '15px', 
+            borderTopRightRadius: '15px' 
+        }} 
+        variant="top" 
+        src={val.img} 
+    />
+    <Card.Body style={{ padding: '20px' }}>
+        {/* Product Title */}
+        <Card.Title className="text-danger" style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>
+            {val.product_name}
+        </Card.Title>
+
+        {/* Product Description */}
+        <Card.Text style={{ fontSize: '0.875rem', color: '#555', marginBottom: '10px' }}>
+            {val.description}
+        </Card.Text>
+
+        {/* Price Text */}
+        <Card.Text style={{ color: "orange", fontWeight: 'bold', fontSize: '1rem' }}>
+            ₹{val.price}
+        </Card.Text>
+
+        {/* Buttons */}
+        <div className="d-flex flex-column align-items-center">
+            <Button 
+                style={{
+                    marginBottom: "8px",  // Reduced margin
+                    width: "180px",  // Reduced width
+                    backgroundColor: "navy", 
+                    color: "#fff", 
+                    borderRadius: "5px", 
+                    padding: "8px", // Reduced padding
+                    fontWeight: 'bold',
+                    fontSize: '0.875rem'  // Reduced font size for the buttons
+                }} 
+                onClick={() => { viewData(val.id) }}>
+                View
+            </Button>
+            
+            <Button 
+                variant="primary" 
+                style={{
+                    width: "180px", // Reduced width
+                    backgroundColor: "navy", 
+                    color: "#fff", 
+                    borderRadius: "5px", 
+                    padding: "8px",  // Reduced padding
+                    fontWeight: 'bold',
+                    fontSize: '0.875rem'  // Reduced font size for the buttons
+                }} 
+                onClick={() => { updateCartID(val) }}>
+                Add to Cart
+            </Button>
+        </div>
+    </Card.Body>
+</Card>
+
                             )
                         }
 

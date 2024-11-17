@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {useNavigate} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Swal from 'sweetalert2';
@@ -12,7 +13,11 @@ function Kids() {
             .catch((err) => { console.log(err) });
     }, []);
     console.log(kidsProduct, "kids")
-
+     // View Data
+     const navigate = useNavigate();
+     function viewData(id) {
+         navigate('/products/description', { state: { id } })
+     }
     function updateCartID(product) {
 
         fetch(`http://localhost:5000/product/${product.id}`)
@@ -69,20 +74,70 @@ function Kids() {
                     kidsProduct.map((val) => {
                         if (val.category == "kids") {
                             return (
-                                <Card style={{ width: '18rem', margin: "15px" }}>
-                                    <Card.Img variant="top" src={val.img} />
-                                    <Card.Body>
-                                        <Card.Title className='text-danger'>{val.product_name}</Card.Title>
-                                        <Card.Text >
-                                            {val.description}<br />
-                                        </Card.Text>
-                                        <Card.Text style={{ color: "orange" }}>
-                                            price:₹{val.price}
-                                        </Card.Text>
-
-                                        <Button variant="primary" style={{ margin: "10px 0px", width: "200px", backgroundColor: "navy" }} onClick={() => { updateCartID(val) }}>Add to Cart</Button>
-                                    </Card.Body>
-                                </Card>
+                                <Card style={{ width: '18rem', margin: "15px", borderRadius: "15px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
+                                {/* Increased Image Size */}
+                                <Card.Img 
+                                    variant="top" 
+                                    src={val.img} 
+                                    style={{
+                                        width: '100%', // Ensure the image spans full width of the card
+                                        height: '250px', // Increased image height
+                                        objectFit: 'cover', // Maintain aspect ratio, cover the available space
+                                        borderTopLeftRadius: '15px', // Round the top left corners
+                                        borderTopRightRadius: '15px' // Round the top right corners
+                                    }} 
+                                />
+                                <Card.Body style={{ padding: '20px' }}>
+                                    {/* Product Title */}
+                                    <Card.Title className="text-danger" style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>
+                                        {val.product_name}
+                                    </Card.Title>
+                            
+                                    {/* Product Description */}
+                                    <Card.Text style={{ fontSize: '0.875rem', color: '#555', marginBottom: '10px' }}>
+                                        {val.description}
+                                    </Card.Text>
+                            
+                                    {/* Price Text */}
+                                    <Card.Text style={{ color: "orange", fontWeight: 'bold', fontSize: '1rem' }}>
+                                        ₹{val.price}
+                                    </Card.Text>
+                            
+                                    {/* Buttons Section */}
+                                    <div className="d-flex flex-column align-items-center">
+                                        <Button 
+                                            style={{
+                                                marginBottom: "8px",  // Reduced margin for better spacing
+                                                width: "180px",  // Reduced width for a more compact button
+                                                backgroundColor: "navy", 
+                                                color: "#fff", 
+                                                borderRadius: "5px", 
+                                                padding: "8px", // Reduced padding for smaller buttons
+                                                fontWeight: 'bold',
+                                                fontSize: '0.875rem'  // Adjusted font size to make it more compact
+                                            }} 
+                                            onClick={() => { viewData(val.id) }}>
+                                            View
+                                        </Button>
+                                        
+                                        <Button 
+                                            variant="primary" 
+                                            style={{
+                                                width: "180px", // Same reduced width for consistency
+                                                backgroundColor: "navy", 
+                                                color: "#fff", 
+                                                borderRadius: "5px", 
+                                                padding: "8px",  // Reduced padding
+                                                fontWeight: 'bold',
+                                                fontSize: '0.875rem'  // Adjusted font size
+                                            }} 
+                                            onClick={() => { updateCartID(val) }}>
+                                            Add to Cart
+                                        </Button>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                            
                             )
                         }
 

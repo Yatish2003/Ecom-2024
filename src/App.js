@@ -9,6 +9,7 @@ import Cart from "./Products/Cart";
 import Login from "./Login-signup/Login";
 import SignUp from "./Login-signup/SignUp";
 import Kids from "./Products/Kids";
+import Admin from "./Admin";
 function App() {
   return (
     <>
@@ -16,6 +17,7 @@ function App() {
       <Navbar/>
         <Routes>
           <Route path="/" element={<Home/>}/>
+          <Route path="/admin" element={<Admin/>}/>
           <Route path="/products" element={<ProductsHome/>}/>
           <Route path="/products/mens" element={<Mens/>}/>
           <Route path="/products/womens" element={<Womens/>}/>

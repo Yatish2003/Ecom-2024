@@ -25,7 +25,7 @@ function SignUp() {
        
 
         // Send data to the server
-        fetch('http://localhost:8000/credentials', {
+        fetch('http://localhost:5000/credentials', {
           method: "POST",
           headers: {
             "Content-type": "application/json",

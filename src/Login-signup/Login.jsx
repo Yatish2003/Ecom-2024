@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './Login.css';
 import Swal from 'sweetalert2';
 function Login() {
+
     const[Creds,setCreds]=useState([]);
     const[emailCreds,setemailCreds]=useState("");
     const[passCreds,setpassCreds]=useState("");
     useEffect(()=>{
-        fetch('http://localhost:8000/credentials')
+        fetch('http://localhost:5000/credentials')
         .then(resp=> resp.json())
         .then((response)=>{setCreds(response)});
     },[])
@@ -58,7 +59,7 @@ function Login() {
                 <form onSubmit={credsvalidation}>
                     
                     <input type="text"  onChange={(e)=>{setemailCreds(e.target.value)}} placeholder='Email*' required />
-                        <input type="password" onChange={(e)=>{setpassCreds(e.target.value)}} placeholder='Password*' required />
+                    <input type="password" onChange={(e)=>{setpassCreds(e.target.value)}} placeholder='Password*' required />
 
                         <button type="submit">Login</button>
 
