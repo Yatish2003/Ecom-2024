@@ -7,7 +7,7 @@ function Kids() {
     // Get Api
     const [kidsProduct, setkidsProduct] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/product')
+        fetch('http://localhost:5000/api/product')
             .then(response => response.json())
             .then((resp) => { setkidsProduct(resp) })
             .catch((err) => { console.log(err) });
@@ -20,7 +20,7 @@ function Kids() {
      }
     function updateCartID(product) {
 
-        fetch(`http://localhost:5000/product/${product.id}`)
+        fetch(`http://localhost:5000/api/product/${product.id}`)
             .then(resp => resp.json())
             .then(response => {
 
@@ -35,7 +35,7 @@ function Kids() {
     function updateCart(obj) {
         let cartVal = { ...obj, cart: true }
         console.log(cartVal, "cartVal")
-        fetch(`http://localhost:5000/product/${obj.id}`, {
+        fetch(`http://localhost:5000/api/product/${obj.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
