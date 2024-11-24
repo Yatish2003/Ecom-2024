@@ -8,46 +8,86 @@ function Cart() {
 
     //Counter Add
     function add(product) {
-        setCounter(Counter => Counter +1)
-            console.log("counter value updated");
-            let counterVal = { ...product, quantity: Counter }
+        // Using functional update to ensure you're updating the state based on the previous value
+        setCounter(prevCounter => {
+            const newCounter = prevCounter + 1;
+            const newPrice=newCounter*product.price;
+            // Prepare the updated product data with the new quantity
+            let counterVal = { ...product, quantity: newCounter,price:newPrice};
             console.log(counterVal, "counterVal");
+    
+            // Sending the updated data to the backend
             fetch(`http://localhost:5000/api/product/${product.id}`, {
-                method: 'put',
+                method: 'PUT',
                 headers: {
                     'Content-Type': "application/json",
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify(counterVal)
-
             })
-                .then(response => response.json())
-                .then((resp) => { 
-                    console.log(resp, "add");
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to update product');
+                    }
+                    return response.json();
                 })
-                .catch((err) => { console.log(err) })
-
+                .then((resp) => {
+                    console.log(resp, "Product updated successfully");
+                    gettingData();
+                })
+                .catch((err) => {
+                    console.error("Error updating product:", err);
+                });
+    
+            // Return the new counter value to update the state
+            return newCounter;
+        });
+    
+        console.log("Counter value updated");
     }
+    
 
     //Counter Sub
     function sub(product) {
-        setCounter(Counter > 1 ? Counter - 1 : 1)
-        let counterVal = { ...product, quantity: Counter }
-        console.log(product, "product");
-        fetch(`http://localhost:5000/api/product/${product.id}`, {
-            method: 'put',
-            headers: {
-                'Content-Type': "application/json",
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(counterVal)
-
-        })
-            .then(response => response.json())
-            .then((resp) => { console.log(resp) })
-            .catch((err) => { console.log(err) })
-
+        // Using functional setState to ensure the update is based on the current state value
+        setCounter(prevCounter => {
+            
+            const newCounter = prevCounter > 1 ? prevCounter - 1 : 1;
+            const newPrice=newCounter*product.price;
+            // Prepare the updated product data with the new quantity
+            let counterVal = { ...product, quantity: newCounter,price:newPrice };
+            console.log(counterVal, "Updated product");
+    
+            // Send the updated data to the backend
+            fetch(`http://localhost:5000/api/product/${product.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': "application/json",
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(counterVal)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to update product');
+                    }
+                    return response.json();
+                })
+                .then((resp) => {
+                    console.log(resp, "Product updated successfully");
+                    gettingData();
+                })
+                .catch((err) => {
+                    console.error("Error updating product:", err);
+                });
+    
+            // Return the new counter value to update the state
+            return newCounter;
+        });
+    
+        console.log("Counter value updated");
     }
+    
     console.log(Counter, "counter");
     //Get Api
     function gettingData() {
