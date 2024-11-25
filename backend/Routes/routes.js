@@ -12,6 +12,7 @@ routes.get('/', (req, res) => {
     res.json(data.product);
 });
 
+
 // GET a single product by ID
 routes.get('/:id', (req, res) => {
     const id = req.params.id; 
@@ -76,5 +77,11 @@ routes.post('/', (req, res) => {
         res.json({ message: 'Product added successfully', newProduct: newProductWithId });
     });
 });
+
+
+
+
+
+
 
 module.exports = routes;
