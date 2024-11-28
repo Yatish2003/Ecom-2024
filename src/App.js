@@ -10,6 +10,7 @@ import Login from "./Login-signup/Login";
 import SignUp from "./Login-signup/SignUp";
 import Kids from "./Products/Kids";
 import Admin from "./Admin";
+import BuyNow from "./Products/BuyNow";
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
 
           <Route path="/products/description" element={<Description/>}/>
 
+          <Route path="/buynow" element={<BuyNow/>}/>
           <Route path="/carts" element={<Cart/>}/>
           <Route path="/wishlist" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>

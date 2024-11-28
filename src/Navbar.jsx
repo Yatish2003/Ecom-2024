@@ -90,7 +90,7 @@ function Navbar() {
                             searchData?.map((val)=>{
                                 return(
                                     <>
-                                        {/* <p>{val.product_name}</p><hr/> */}
+                                        
                                         <p onClick={()=>{local(val.id)}}>{val.product_name}</p><hr/>
                                         
                                     </>

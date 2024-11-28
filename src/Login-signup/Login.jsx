@@ -27,6 +27,7 @@ function Login() {
                             title: "Login Successful",
                             text: "You have successfully signed up!",
                         });
+                        
                           setTimeout(()=>{window.location="./";},1000);
                     }else{
                         Swal.fire({

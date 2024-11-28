@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2';
@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 function Description() {
     const [getValue, setgetValue] = useState([]);
     const [Img,setImg]=useState("");
+    let navigate=useNavigate();
     const location = useLocation();
     const navigateId = location.state.id;
     console.log(navigateId)
@@ -70,6 +71,14 @@ function Description() {
                 }); })
             .catch((err) => { console.log(err) })
     }
+
+    function buyNow(productId){
+        console.log(productId,"productId")
+        navigate('/buynow',{state:{productId}})
+
+    }
+
+
     return (
         <div className='container-fluid d-flex justify-content-center flex-wrap m-3'>
             {
@@ -179,7 +188,7 @@ function Description() {
                                 {/* Add to Cart / Buy Now */}
                                 <div className="d-flex justify-content-between mt-auto">
                                     <Button variant="success" style={{ width: '48%' }} onClick={() => { updateCartID(val) }}>Add to Cart</Button>
-                                    <Button variant="warning"  style={{ width: '48%' }}>Buy Now</Button>
+                                    <Button variant="warning"  style={{ width: '48%' }} onClick={() => { buyNow(val.id)}}>Buy Now</Button>
                                 </div>
                             </div>
                         

@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-
+import {useNavigate} from 'react-router-dom'
 function Cart() {
     let [getValue, setgetValue] = useState([]);
     const [Counter, setCounter] = useState(1);
-
+    let navigate=useNavigate();
     //Counter Add
     function add(product) {
-        // Using functional update to ensure you're updating the state based on the previous value
+        
         setCounter(prevCounter => {
             const newCounter = prevCounter + 1;
             const newPrice=newCounter*product.price;
-            // Prepare the updated product data with the new quantity
+            
             let counterVal = { ...product, quantity: newCounter,price:newPrice};
             console.log(counterVal, "counterVal");
     
-            // Sending the updated data to the backend
+            
             fetch(`http://localhost:5000/api/product/${product.id}`, {
                 method: 'PUT',
                 headers: {
@@ -39,7 +39,7 @@ function Cart() {
                     console.error("Error updating product:", err);
                 });
     
-            // Return the new counter value to update the state
+            
             return newCounter;
         });
     
@@ -49,16 +49,16 @@ function Cart() {
 
     //Counter Sub
     function sub(product) {
-        // Using functional setState to ensure the update is based on the current state value
+        
         setCounter(prevCounter => {
             
             const newCounter = prevCounter > 1 ? prevCounter - 1 : 1;
             const newPrice=newCounter*product.price;
-            // Prepare the updated product data with the new quantity
+            
             let counterVal = { ...product, quantity: newCounter,price:newPrice };
             console.log(counterVal, "Updated product");
     
-            // Send the updated data to the backend
+           
             fetch(`http://localhost:5000/api/product/${product.id}`, {
                 method: 'PUT',
                 headers: {
@@ -81,7 +81,7 @@ function Cart() {
                     console.error("Error updating product:", err);
                 });
     
-            // Return the new counter value to update the state
+            
             return newCounter;
         });
     
@@ -122,6 +122,11 @@ function Cart() {
             })
             .catch((err) => { console.log(err) });
 
+
+    }
+    function buyNow(productId){
+        console.log(productId,"productId")
+        navigate('/buynow',{state:{productId}})
 
     }
 
@@ -212,7 +217,7 @@ function Cart() {
                                                     fontSize: "0.9rem",
                                                     borderRadius: "5px"
                                                 }}
-                                                onClick={() => { /* Buy Now action */ }}
+                                                onClick={() => { buyNow(cartProduct.id) }}
                                             >
                                                 Buy Now
                                             </Button>
